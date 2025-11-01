@@ -71,25 +71,55 @@ Implementing production-critical subset of v2.0 upgrade per Option B plan.
 
 ---
 
-### 📋 PR3: FastAPI /metrics & /healthz + Structured Logs (PENDING)
+### ✅ PR3: FastAPI /metrics & /healthz + Structured Logs (COMPLETED)
 
-**Status**: Dependencies ready
+**Status**: Implementation complete
 
-**Files to Create:**
-- `app/web/__init__.py`
-- `app/web/server.py` - FastAPI app
-- `app/web/metrics.py` - Prometheus registry
-- `app/web/logging.py` - JSON structured logging
+**Files Added:**
+- `app/web/__init__.py` - Package init
+- `app/web/server.py` - FastAPI app with observability endpoints
+- `app/web/metrics.py` - Centralized Prometheus registry
+- `app/web/logging.py` - Structured JSON logging with structlog
+- `tests/test_web_endpoints.py` - Comprehensive endpoint tests
+- `scripts/run_server.py` - Production server runner
 
-**Metrics to Expose:**
-- `cdc_events_total{object}`
-- `cdc_lag_seconds`
-- `decisions_total{workload,outcome}`
-- `first_response_latency_seconds` (done in PR1)
-- `assignment_latency_seconds`
-- `errors_total{area}`
+**Key Features:**
+- ✅ GET /metrics - Prometheus exposition format
+- ✅ GET /healthz - Liveness probe (always 200)
+- ✅ GET /ready - Readiness probe (503 if not ready)
+- ✅ GET /version - Version and environment info
+- ✅ GET / - API information
+- ✅ GET /docs - Auto-generated API docs (FastAPI/Swagger)
+- ✅ Structured JSON logging with structlog
+- ✅ Request context tracking
+- ✅ Component health check registration
 
-**Estimated Effort**: 2 hours
+**Metrics Exposed:**
+- ✅ `cdc_events_total{object, change_type}`
+- ✅ `cdc_lag_seconds{object}`
+- ✅ `cdc_errors_total{object, error_type}`
+- ✅ `first_response_latency_seconds` (histogram)
+- ✅ `first_response_updates_total{outcome}`
+- ✅ `decisions_total{workload, outcome}`
+- ✅ `assignment_latency_seconds` (histogram)
+- ✅ `auth_requests_total{status}`
+- ✅ `auth_latency_seconds` (histogram)
+- ✅ `errors_total{area, error_type}`
+- ✅ `api_requests_total{method, object, status}`
+- ✅ `api_request_duration_seconds` (histogram)
+- ✅ `active_workers{workload}`
+- ✅ `queue_depth{queue_name}`
+- ✅ `system_info{version, environment}`
+
+**Acceptance Criteria:**
+- ✅ /metrics returns Prometheus format
+- ✅ /healthz returns 200 (liveness)
+- ✅ /ready returns 200/503 based on checks
+- ✅ All metrics aggregated in single registry
+- ✅ Structured logs in JSON format
+- ✅ Component health tracking
+
+**Time Invested**: ~2 hours
 
 ---
 
@@ -139,15 +169,15 @@ Implementing production-critical subset of v2.0 upgrade per Option B plan.
 
 ## Summary
 
-**Completed**: 2/5 PRs (40%)
+**Completed**: 3/5 PRs (60%)
 
-**Time Invested**: ~4 hours
+**Time Invested**: ~6 hours
 
-**Remaining Effort**: ~6-7 hours
+**Remaining Effort**: ~4-5 hours
 
 **Next Steps**:
 1. ✅ ~~Implement PR2 (CDC subscriber)~~ - DONE
-2. Implement PR3 (metrics/health) - enables observability
+2. ✅ ~~Implement PR3 (metrics/health)~~ - DONE
 3. Implement PR4 (SF metadata) - enables Salesforce-native KPIs
 4. Implement PR5 (flywheel + CI) - enables continuous improvement
 
@@ -155,6 +185,7 @@ Implementing production-critical subset of v2.0 upgrade per Option B plan.
 - ✅ Local testing of TTFR idempotency
 - ✅ Policy validation testing
 - ✅ CDC event processing with replay resumption
+- ✅ Metrics and health monitoring via FastAPI
 - Review of approach before continuing
 
 ## Testing Notes
@@ -172,9 +203,18 @@ pip install -r requirements.txt
 pytest tests/test_first_touch_idempotent.py -v
 pytest tests/test_lead_route_policy.py -v
 pytest tests/test_cdc_replay.py -v
+pytest tests/test_web_endpoints.py -v
 
 # Run local CDC test (requires .env with SF credentials)
 python scripts/run_cdc_local.py
+
+# Run web server (development mode)
+python scripts/run_server.py --dev
+
+# Test endpoints
+curl http://localhost:8080/metrics
+curl http://localhost:8080/healthz
+curl http://localhost:8080/ready
 ```
 
 ## Integration Points
@@ -186,14 +226,14 @@ python scripts/run_cdc_local.py
 
 ## Files Created So Far
 
-**Total**: 20 files
-- App code: 10 files
-- Tests: 3 files
-- Scripts: 1 file
+**Total**: 26 files
+- App code: 13 files
+- Tests: 4 files
+- Scripts: 2 files
 - Config: 3 files
-- Docs: 3 files
+- Docs: 4 files
 
-**Lines of Code**: ~2,700 lines
+**Lines of Code**: ~3,500 lines
 
 ## Blockers
 
@@ -202,12 +242,12 @@ None currently. System is architecturally sound and ready for continued implemen
 ## Recommendations
 
 1. ✅ ~~**Continue PR2 next**~~ - DONE
-2. **Test in venv** - Avoid system Python issues
-3. **Continue PR3 next** (metrics/health) - Enables observability in production
-4. **Deploy SF metadata early** (PR4) - Enables end-to-end testing
+2. ✅ ~~**Continue PR3 next**~~ - DONE
+3. **Test in venv** - Avoid system Python issues
+4. **Continue PR4 next** (SF metadata) - Enables Salesforce-native KPIs and end-to-end testing
 5. **CI can wait** (PR5) - Not blocking functionality
 
 ---
 
 Last Updated: 2025-11-01
-Next Session: PR3 (FastAPI /metrics & /healthz)
+Next Session: PR4 (Salesforce-Native Observability)
