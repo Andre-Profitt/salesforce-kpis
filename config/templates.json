@@ -1,0 +1,65 @@
+[
+  {
+    "id": "pricing_inquiry",
+    "name": "Pricing Inquiry Response",
+    "intent": "pricing",
+    "subject": "Re: Pricing information for {{product}}",
+    "body": "Hi {{first_name}},\n\nThanks for your interest in {{product}}! I'd be happy to discuss pricing options that fit your needs.\n\nBased on your company size ({{employee_count}} employees), I recommend our {{segment}} plan which includes:\n- Advanced analytics and reporting\n- Priority support with dedicated CSM\n- Custom integrations and API access\n- Enterprise-grade security and compliance\n\nWould you be available for a quick 15-minute call this week to discuss your specific requirements and provide a customized quote?\n\nBest regards,\n{{rep_name}}",
+    "variables": ["first_name", "product", "employee_count", "segment", "rep_name"],
+    "tags": ["pricing", "quote", "commercial"]
+  },
+  {
+    "id": "demo_request",
+    "name": "Demo Request Response",
+    "intent": "demo",
+    "subject": "Let's schedule your {{product}} demo",
+    "body": "Hi {{first_name}},\n\nThanks for requesting a demo of {{product}}! I'm excited to show you how we can help {{company}} streamline operations and drive growth.\n\nI have availability this week on:\n- Tuesday, 2-4 PM EST\n- Wednesday, 10 AM-12 PM EST\n- Thursday, 3-5 PM EST\n\nWhich works best for you? The demo typically takes 30 minutes and I'll customize it to your {{industry}} use case.\n\nI'll send a calendar invitation with a video conference link once you confirm your preferred time.\n\nLooking forward to connecting!\n\nBest,\n{{rep_name}}",
+    "variables": ["first_name", "product", "company", "industry", "rep_name"],
+    "tags": ["demo", "meeting", "product"]
+  },
+  {
+    "id": "technical_question",
+    "name": "Technical Question Response",
+    "intent": "technical",
+    "subject": "Re: {{product}} - Technical details",
+    "body": "Hi {{first_name}},\n\nGreat question about {{product}}! Let me provide some technical details:\n\nOur platform is built on enterprise-grade architecture with:\n- 99.99% uptime SLA\n- SOC 2 Type II certified\n- REST and GraphQL APIs\n- Real-time data synchronization\n- Scalable microservices architecture\n\nFor {{industry}} companies like {{company}}, this typically means faster implementation, better data security, and seamless integration with your existing tech stack.\n\nI'd be happy to connect you with our solutions engineer for a technical deep-dive call. We can cover:\n- Integration requirements\n- Data migration process\n- Security and compliance\n- Performance benchmarks\n\nWould that be helpful?\n\nBest regards,\n{{rep_name}}",
+    "variables": ["first_name", "product", "industry", "company", "rep_name"],
+    "tags": ["technical", "integration", "security"]
+  },
+  {
+    "id": "general_inquiry",
+    "name": "General Inquiry Response",
+    "intent": "general",
+    "subject": "Re: Inquiry about {{product}}",
+    "body": "Hi {{first_name}},\n\nThanks for reaching out about {{product}}! We help {{industry}} companies improve efficiency and drive better outcomes.\n\nBased on your inquiry, I think you'd be particularly interested in:\n- Automated workflow management\n- Real-time analytics and insights\n- Seamless integrations with popular tools\n- Dedicated customer success support\n\nWould you like to schedule a brief 15-minute call to discuss how we can help {{company}} specifically? I'm happy to answer any questions and share relevant case studies from similar companies in your industry.\n\nBest,\n{{rep_name}}",
+    "variables": ["first_name", "product", "industry", "company", "rep_name"],
+    "tags": ["general", "overview", "introduction"]
+  },
+  {
+    "id": "partnership_inquiry",
+    "name": "Partnership Inquiry Response",
+    "intent": "partnership",
+    "subject": "Re: Partnership opportunity with {{product}}",
+    "body": "Hi {{first_name}},\n\nThank you for your interest in partnering with us! We're always looking to collaborate with innovative companies in the {{industry}} space.\n\nOur partnership program offers:\n- Co-marketing opportunities\n- Revenue sharing models\n- Technical integration support\n- Joint go-to-market strategies\n\nI'd love to learn more about {{company}} and explore how we might work together. Would you be available for an introductory call next week?\n\nIn the meantime, I'm attaching our partnership overview deck for your review.\n\nLooking forward to connecting!\n\nBest,\n{{rep_name}}",
+    "variables": ["first_name", "product", "industry", "company", "rep_name"],
+    "tags": ["partnership", "business development", "collaboration"]
+  },
+  {
+    "id": "trial_request",
+    "name": "Trial Request Response",
+    "intent": "trial",
+    "subject": "Your {{product}} trial is ready!",
+    "body": "Hi {{first_name}},\n\nGreat news! I've set up your {{product}} trial account for {{company}}.\n\nYour trial includes:\n- Full access to all features for 14 days\n- Sample data to explore the platform\n- Step-by-step onboarding guides\n- Priority email and chat support\n\nTo get started:\n1. Check your email for login credentials\n2. Complete the 5-minute setup wizard\n3. Explore our interactive tutorials\n\nI'll check in with you in a few days to see how things are going and answer any questions. In the meantime, feel free to reach out anytime!\n\nHappy exploring!\n\n{{rep_name}}",
+    "variables": ["first_name", "product", "company", "rep_name"],
+    "tags": ["trial", "onboarding", "activation"]
+  },
+  {
+    "id": "competitive_inquiry",
+    "name": "Competitive Comparison Response",
+    "intent": "comparison",
+    "subject": "Re: How {{product}} compares",
+    "body": "Hi {{first_name}},\n\nThanks for considering {{product}}! I'm happy to explain what sets us apart.\n\nCompared to other solutions in the market, our customers choose us for:\n- 40% faster implementation time\n- Superior user experience (4.8/5 rating)\n- More flexible pricing with no hidden fees\n- Best-in-class customer support\n- Industry-specific features for {{industry}}\n\nI'd be happy to walk you through a side-by-side comparison and share case studies from companies like {{company}} that have switched to our platform.\n\nWould a quick comparison call be helpful?\n\nBest,\n{{rep_name}}",
+    "variables": ["first_name", "product", "industry", "company", "rep_name"],
+    "tags": ["competitive", "comparison", "differentiation"]
+  }
+]

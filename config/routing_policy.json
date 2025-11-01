@@ -1,0 +1,53 @@
+{
+  "segments": {
+    "SMB": {
+      "employee_range": [1, 200],
+      "priority": "low",
+      "sla_hours": 48
+    },
+    "MM": {
+      "employee_range": [201, 2000],
+      "priority": "medium",
+      "sla_hours": 24
+    },
+    "Enterprise": {
+      "employee_range": [2001, null],
+      "priority": "high",
+      "sla_hours": 4
+    }
+  },
+  "regions": {
+    "NA": ["US", "CA", "MX"],
+    "EMEA": ["GB", "DE", "FR", "IT", "ES", "NL", "CH", "AT", "BE", "SE", "NO", "DK", "FI", "IE", "PL"],
+    "APAC": ["AU", "JP", "SG", "IN", "CN", "KR", "NZ", "HK", "TW", "MY", "TH"],
+    "LATAM": ["BR", "AR", "CL", "CO", "PE"],
+    "MEA": ["AE", "SA", "ZA", "IL", "EG"]
+  },
+  "owners": {
+    "SMB_NA": "005xx0000012001",
+    "SMB_EMEA": "005xx0000012002",
+    "SMB_APAC": "005xx0000012003",
+    "SMB_LATAM": "005xx0000012004",
+    "SMB_MEA": "005xx0000012005",
+    "MM_NA": "005xx0000012011",
+    "MM_EMEA": "005xx0000012012",
+    "MM_APAC": "005xx0000012013",
+    "MM_LATAM": "005xx0000012014",
+    "MM_MEA": "005xx0000012015",
+    "Enterprise_NA": "005xx0000012021",
+    "Enterprise_EMEA": "005xx0000012022",
+    "Enterprise_APAC": "005xx0000012023",
+    "Enterprise_LATAM": "005xx0000012024",
+    "Enterprise_MEA": "005xx0000012025"
+  },
+  "queues": {
+    "default": "00Gxx0000000001",
+    "overflow": "00Gxx0000000002",
+    "technical": "00Gxx0000000003"
+  },
+  "routing_rules": {
+    "high_priority_industries": ["Technology", "Financial Services", "Healthcare"],
+    "auto_accept_countries": ["US", "GB", "DE", "FR", "AU"],
+    "require_validation_countries": ["CN", "RU", "NG"]
+  }
+}
