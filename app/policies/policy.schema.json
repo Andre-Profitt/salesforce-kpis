@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Routing Policy Schema",
+  "description": "Schema for lead routing policy configuration",
+  "type": "object",
+  "required": ["version", "segments", "regions", "owners"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^v\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (e.g., v1.2.0)"
+    },
+    "segments": {
+      "type": "object",
+      "description": "Segment definitions by employee count",
+      "patternProperties": {
+        "^[A-Z_]+$": {
+          "type": "object",
+          "required": ["employee_range", "priority"],
+          "properties": {
+            "employee_range": {
+              "type": "array",
+              "items": [
+                {"type": "integer", "minimum": 0},
+                {"type": ["integer", "null"], "minimum": 1}
+              ],
+              "minItems": 2,
+              "maxItems": 2,
+              "description": "[min, max] or [min, null] for unbounded"
+            },
+            "priority": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "sla_hours": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Target response SLA in hours"
+            }
+          }
+        }
+      }
+    },
+    "regions": {
+      "type": "object",
+      "description": "Region mappings from country codes",
+      "patternProperties": {
+        "^[A-Z_]+$": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^[A-Z]{2}$"},
+          "description": "List of 2-letter country codes"
+        }
+      }
+    },
+    "owners": {
+      "type": "object",
+      "description": "Owner assignments by segment_region",
+      "patternProperties": {
+        "^[A-Z_]+_[A-Z_]+$": {
+          "type": "string",
+          "pattern": "^(005|00G)[a-zA-Z0-9]{12,15}$",
+          "description": "Salesforce User (005) or Queue (00G) ID"
+        }
+      }
+    },
+    "queues": {
+      "type": "object",
+      "description": "Fallback queue IDs",
+      "properties": {
+        "default": {
+          "type": "string",
+          "pattern": "^00G[a-zA-Z0-9]{12,15}$"
+        },
+        "overflow": {
+          "type": "string",
+          "pattern": "^00G[a-zA-Z0-9]{12,15}$"
+        }
+      }
+    }
+  }
+}

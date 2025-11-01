@@ -1,0 +1,48 @@
+{
+  "version": "v1.0.0",
+  "segments": {
+    "SMB": {
+      "employee_range": [1, 200],
+      "priority": "low",
+      "sla_hours": 48
+    },
+    "MM": {
+      "employee_range": [201, 2000],
+      "priority": "medium",
+      "sla_hours": 24
+    },
+    "ENT": {
+      "employee_range": [2001, null],
+      "priority": "high",
+      "sla_hours": 4
+    }
+  },
+  "regions": {
+    "NA": ["US", "CA", "MX"],
+    "EMEA": ["GB", "DE", "FR", "IT", "ES", "NL", "CH", "AT", "BE", "SE", "NO", "DK", "FI", "IE", "PL"],
+    "APAC": ["AU", "JP", "SG", "IN", "CN", "KR", "NZ", "HK", "TW", "MY", "TH"],
+    "LATAM": ["BR", "AR", "CL", "CO", "PE", "UY", "EC"],
+    "MEA": ["AE", "SA", "ZA", "IL", "EG", "KE", "NG"]
+  },
+  "owners": {
+    "SMB_NA": "005xx0000012001AAA",
+    "SMB_EMEA": "005xx0000012002AAA",
+    "SMB_APAC": "005xx0000012003AAA",
+    "SMB_LATAM": "005xx0000012004AAA",
+    "SMB_MEA": "005xx0000012005AAA",
+    "MM_NA": "005xx0000012011AAA",
+    "MM_EMEA": "005xx0000012012AAA",
+    "MM_APAC": "005xx0000012013AAA",
+    "MM_LATAM": "005xx0000012014AAA",
+    "MM_MEA": "005xx0000012015AAA",
+    "ENT_NA": "005xx0000012021AAA",
+    "ENT_EMEA": "005xx0000012022AAA",
+    "ENT_APAC": "005xx0000012023AAA",
+    "ENT_LATAM": "005xx0000012024AAA",
+    "ENT_MEA": "005xx0000012025AAA"
+  },
+  "queues": {
+    "default": "00Gxx0000000001AAA",
+    "overflow": "00Gxx0000000002AAA"
+  }
+}
