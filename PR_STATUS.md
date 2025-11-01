@@ -36,27 +36,38 @@ Implementing production-critical subset of v2.0 upgrade per Option B plan.
 
 ---
 
-### 🚧 PR2: Pub/Sub CDC Subscriber + Replay Resumption (NEXT)
+### ✅ PR2: Pub/Sub CDC Subscriber + Replay Resumption (COMPLETED)
 
-**Status**: Ready to implement
+**Status**: Implementation complete
 
-**Files to Create:**
-- `app/cdc/__init__.py`
-- `app/cdc/subscriber.py` - CDC subscriber with replay
+**Files Added:**
+- `app/cdc/__init__.py` - Package init
+- `app/cdc/subscriber.py` - CDC subscriber with replay (~350 lines)
+- `tests/test_cdc_replay.py` - Comprehensive replay tests
 - `scripts/run_cdc_local.py` - Local test runner
 
 **Already Done:**
 - ✅ `app/cdc/replay_store.py` - Replay persistence
 - ✅ `app/cdc/fixtures/` - Sample CDC events
 
-**TODO:**
-- [ ] Implement CDC subscriber class
-- [ ] Wire to workload handlers
-- [ ] Add metrics (cdc_events_total, cdc_lag_seconds)
-- [ ] Write tests/test_cdc_replay.py
-- [ ] Create run script
+**Key Features:**
+- ✅ Replay ID persistence and resumption
+- ✅ Polling fallback for orgs without Pub/Sub
+- ✅ Handler registration for Lead/Task/EmailMessage events
+- ✅ Prometheus metrics (cdc_events_total, cdc_lag_seconds, cdc_errors_total)
+- ✅ Health status reporting
+- ✅ Thread-safe event processing
+- ✅ Converts poll results to CDC event format
+- ✅ Local test runner wired to FirstTouchDetector
 
-**Estimated Effort**: 2-3 hours
+**Acceptance Criteria:**
+- ✅ Replay IDs persisted after each event
+- ✅ Subscriber resumes from stored replay ID
+- ✅ Handlers invoked for registered channels
+- ✅ Metrics incremented correctly
+- ✅ Health status shows replay IDs and last event times
+
+**Time Invested**: ~2 hours
 
 ---
 
@@ -128,21 +139,22 @@ Implementing production-critical subset of v2.0 upgrade per Option B plan.
 
 ## Summary
 
-**Completed**: 1/5 PRs (20%)
+**Completed**: 2/5 PRs (40%)
 
-**Time Invested**: ~2 hours
+**Time Invested**: ~4 hours
 
-**Remaining Effort**: ~9-10 hours
+**Remaining Effort**: ~6-7 hours
 
 **Next Steps**:
-1. Implement PR2 (CDC subscriber) - enables real-time processing
+1. ✅ ~~Implement PR2 (CDC subscriber)~~ - DONE
 2. Implement PR3 (metrics/health) - enables observability
 3. Implement PR4 (SF metadata) - enables Salesforce-native KPIs
 4. Implement PR5 (flywheel + CI) - enables continuous improvement
 
 **Branch Ready for**:
-- Local testing of TTFR idempotency
-- Policy validation testing
+- ✅ Local testing of TTFR idempotency
+- ✅ Policy validation testing
+- ✅ CDC event processing with replay resumption
 - Review of approach before continuing
 
 ## Testing Notes
@@ -156,9 +168,13 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-# Run tests
+# Run all tests
 pytest tests/test_first_touch_idempotent.py -v
 pytest tests/test_lead_route_policy.py -v
+pytest tests/test_cdc_replay.py -v
+
+# Run local CDC test (requires .env with SF credentials)
+python scripts/run_cdc_local.py
 ```
 
 ## Integration Points
@@ -170,13 +186,14 @@ pytest tests/test_lead_route_policy.py -v
 
 ## Files Created So Far
 
-**Total**: 17 files
-- App code: 9 files
-- Tests: 2 files
+**Total**: 20 files
+- App code: 10 files
+- Tests: 3 files
+- Scripts: 1 file
 - Config: 3 files
 - Docs: 3 files
 
-**Lines of Code**: ~2,000 lines
+**Lines of Code**: ~2,700 lines
 
 ## Blockers
 
@@ -184,12 +201,13 @@ None currently. System is architecturally sound and ready for continued implemen
 
 ## Recommendations
 
-1. **Continue PR2 next** - Critical for real-time processing
+1. ✅ ~~**Continue PR2 next**~~ - DONE
 2. **Test in venv** - Avoid system Python issues
-3. **Deploy SF metadata early** (PR4) - Enables end-to-end testing
-4. **CI can wait** (PR5) - Not blocking functionality
+3. **Continue PR3 next** (metrics/health) - Enables observability in production
+4. **Deploy SF metadata early** (PR4) - Enables end-to-end testing
+5. **CI can wait** (PR5) - Not blocking functionality
 
 ---
 
 Last Updated: 2025-11-01
-Next Session: PR2 (CDC Subscriber)
+Next Session: PR3 (FastAPI /metrics & /healthz)
