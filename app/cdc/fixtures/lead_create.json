@@ -1,0 +1,34 @@
+{
+  "channel": "/data/LeadChangeEvent",
+  "data": {
+    "schema": "TBvYu0OOy6Pa0tqa2ilw",
+    "payload": {
+      "ChangeEventHeader": {
+        "entityName": "Lead",
+        "recordIds": ["00Q5e000001AbcDEFG"],
+        "changeType": "CREATE",
+        "changeOrigin": "com/salesforce/api/soap/59.0",
+        "transactionKey": "00000192-8a89-1234-5678-0000abcd1234",
+        "sequenceNumber": 1,
+        "commitTimestamp": 1698765432000,
+        "commitNumber": 987654321,
+        "commitUser": "0055e000000AbcDEFG"
+      },
+      "Id": "00Q5e000001AbcDEFG",
+      "Company": "Acme Corp",
+      "Country": "US",
+      "NumberOfEmployees": 500,
+      "Industry": "Technology",
+      "Product_Interest__c": "Analytics Platform",
+      "Description": "Interested in pricing for your analytics platform",
+      "LeadSource": "Website",
+      "AnnualRevenue": 5000000,
+      "Status": "Open - Not Contacted",
+      "CreatedDate": "2025-11-01T10:30:00.000Z",
+      "CreatedById": "0055e000000AbcDEFG"
+    },
+    "event": {
+      "replayId": 12345678
+    }
+  }
+}

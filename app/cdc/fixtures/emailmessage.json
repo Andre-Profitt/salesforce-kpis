@@ -1,0 +1,32 @@
+{
+  "channel": "/data/EmailMessageChangeEvent",
+  "data": {
+    "schema": "XYZabc123def456GHI",
+    "payload": {
+      "ChangeEventHeader": {
+        "entityName": "EmailMessage",
+        "recordIds": ["02s5e000001EmailABC"],
+        "changeType": "CREATE",
+        "changeOrigin": "com/salesforce/api/soap/59.0",
+        "transactionKey": "00000194-8a89-1234-5678-0000abcd1236",
+        "sequenceNumber": 1,
+        "commitTimestamp": 1698765632000,
+        "commitNumber": 987654323,
+        "commitUser": "0055e000000SdrRepABC"
+      },
+      "Id": "02s5e000001EmailABC",
+      "RelatedToId": "00Q5e000001AbcDEFG",
+      "FromAddress": "sdr@company.com",
+      "ToAddress": "prospect@acme.com",
+      "Subject": "Re: Pricing information for Analytics Platform",
+      "TextBody": "Hi there, thanks for your interest...",
+      "Status": "3",
+      "MessageDate": "2025-11-01T10:40:00.000Z",
+      "CreatedDate": "2025-11-01T10:40:00.000Z",
+      "CreatedById": "0055e000000SdrRepABC"
+    },
+    "event": {
+      "replayId": 12345680
+    }
+  }
+}

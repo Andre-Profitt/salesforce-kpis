@@ -1,0 +1,32 @@
+{
+  "channel": "/data/TaskChangeEvent",
+  "data": {
+    "schema": "ABcD123efgh456WXYZ",
+    "payload": {
+      "ChangeEventHeader": {
+        "entityName": "Task",
+        "recordIds": ["00T5e000001XyzABC"],
+        "changeType": "UPDATE",
+        "changedFields": ["Status"],
+        "changeOrigin": "com/salesforce/api/soap/59.0",
+        "transactionKey": "00000193-8a89-1234-5678-0000abcd1235",
+        "sequenceNumber": 1,
+        "commitTimestamp": 1698765732000,
+        "commitNumber": 987654322,
+        "commitUser": "0055e000000SdrRepABC"
+      },
+      "Id": "00T5e000001XyzABC",
+      "WhoId": "00Q5e000001AbcDEFG",
+      "OwnerId": "0055e000000SdrRepABC",
+      "Status": "Completed",
+      "Type": "Call",
+      "Subject": "Follow up call",
+      "Description": "Discussed pricing and implementation timeline",
+      "CreatedDate": "2025-11-01T10:45:00.000Z",
+      "CreatedById": "0055e000000SdrRepABC"
+    },
+    "event": {
+      "replayId": 12345679
+    }
+  }
+}
