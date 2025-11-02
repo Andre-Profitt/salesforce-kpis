@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_Response_At__c</fullName>
+    <description>Timestamp of the first response to this lead (Task completion or EmailMessage). Used to calculate Time to First Response (TTFR). Populated idempotently - only updates if new response is earlier than existing.</description>
+    <externalId>false</externalId>
+    <label>First Response At</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

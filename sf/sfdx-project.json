@@ -1,0 +1,16 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "Salesforce KPIs",
+      "versionName": "v2.0",
+      "versionNumber": "2.0.0.NEXT"
+    }
+  ],
+  "name": "salesforce-kpis",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "59.0",
+  "packageAliases": {}
+}
